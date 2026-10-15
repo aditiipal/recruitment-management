@@ -1,0 +1,130 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ===== Global Reset & Base ===== */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  color: #17324D;
+  background-color: #FFF9F3;
+  line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+  line-height: 1.2;
+}
+
+/* ===== Focus States ===== */
+*:focus-visible {
+  outline: 2px solid #5E8FA3;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* ===== Scrollbar ===== */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #d1d5db; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #9ca3af; }
+
+/* ===== Selection ===== */
+::selection { background: rgba(198, 93, 59, 0.15); color: #17324D; }
+
+/* ===== Transitions ===== */
+@layer utilities {
+  .transition-default {
+    @apply transition-all duration-200 ease-in-out;
+  }
+}
+
+/* ===== Card Hover ===== */
+.card-interactive {
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.card-interactive:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(23,50,77,0.08), 0 4px 10px rgba(23,50,77,0.04);
+}
+
+/* ===== Gradient Backgrounds ===== */
+.bg-hero-gradient {
+  background: linear-gradient(135deg, #FFF9F3 0%, #DCEFF5 50%, #FFF9F3 100%);
+}
+
+.bg-navy-gradient {
+  background: linear-gradient(180deg, #17324D 0%, #1E4060 100%);
+}
+
+.bg-cta-gradient {
+  background: linear-gradient(135deg, #17324D 0%, #1E4060 40%, #2A5270 100%);
+}
+
+/* ===== Pipeline Stage Colors ===== */
+.stage-applied { background-color: rgba(94, 143, 163, 0.1); border-left: 3px solid #5E8FA3; }
+.stage-screening { background-color: rgba(220, 239, 245, 0.5); border-left: 3px solid #5E8FA3; }
+.stage-shortlisted { background-color: rgba(198, 93, 59, 0.08); border-left: 3px solid #C65D3B; }
+.stage-interview { background-color: rgba(124, 92, 252, 0.08); border-left: 3px solid #7C5CFC; }
+.stage-offer { background-color: rgba(232, 168, 56, 0.08); border-left: 3px solid #E8A838; }
+.stage-hired { background-color: rgba(34, 160, 107, 0.08); border-left: 3px solid #22A06B; }
+.stage-rejected { background-color: rgba(220, 82, 75, 0.06); border-left: 3px solid #DC524B; }
+
+/* ===== Kanban Column ===== */
+.kanban-column {
+  min-height: 400px;
+}
+
+/* ===== Drag placeholder ===== */
+.drag-over {
+  background-color: rgba(198, 93, 59, 0.05);
+  border: 2px dashed #C65D3B;
+}
+
+/* ===== Toast ===== */
+.toast-enter {
+  animation: slideInRight 0.3s ease-out, fadeIn 0.3s ease-out;
+}
+.toast-exit {
+  animation: fadeOut 0.3s ease-in forwards;
+}
+@keyframes fadeOut {
+  from { opacity: 1; transform: translateX(0); }
+  to { opacity: 0; transform: translateX(20px); }
+}
+
+/* ===== Responsive table wrapper ===== */
+.table-responsive {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* ===== Loading skeleton ===== */
+.skeleton {
+  background: linear-gradient(90deg, #E6E9EC 25%, #f3f4f6 50%, #E6E9EC 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: 8px;
+}
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* ===== Chart tooltip ===== */
+.recharts-tooltip-wrapper {
+  filter: drop-shadow(0 4px 12px rgba(23,50,77,0.1));
+}
+
+/* ===== Print styles ===== */
+@media print {
+  .no-print { display: none !important; }
+  body { background: white; }
+}
